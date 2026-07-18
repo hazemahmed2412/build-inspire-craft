@@ -517,14 +517,6 @@ function ServicePanel({ t, img, k, idx, total }: { t: string; img: string; k: st
 
 /* ────────────────── SECTION 5 — Gallery masonry ────────────────── */
 function SectionGallery() {
-  const items = [
-    { src: p1, span: "row-span-2" },
-    { src: p2, span: "" },
-    { src: p3, span: "row-span-2" },
-    { src: p4, span: "" },
-    { src: p5, span: "row-span-2" },
-    { src: p6, span: "" },
-  ];
   return (
     <section id="work" className="border-t border-border py-32 md:py-48">
       <div className="mx-auto max-w-[92rem] px-6 md:px-10 mb-16">
