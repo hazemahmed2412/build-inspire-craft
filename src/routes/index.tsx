@@ -17,6 +17,7 @@ import sTurnkey from "@/assets/service-turnkey.jpg";
 import mCnc from "@/assets/mfg-cnc.jpg";
 import mLaser from "@/assets/mfg-laser.jpg";
 import mWood from "@/assets/mfg-wood.jpg";
+import materialWood from "@/assets/material-wood.jpg";
 import mPaint from "@/assets/mfg-paint.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
