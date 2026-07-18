@@ -533,7 +533,9 @@ function SectionGallery() {
         </div>
       </div>
       <div className="mx-auto max-w-[92rem] px-6 md:px-10 grid grid-cols-2 md:grid-cols-3 auto-rows-[22vh] md:auto-rows-[28vh] gap-4 md:gap-6">
-        {items.map((it, i) => <TiltCard key={i} src={it.src} className={it.span} idx={i} />)}
+        {projects.map((p, i) => (
+          <TiltCard key={p.id} project={p} idx={i} />
+        ))}
       </div>
     </section>
   );
