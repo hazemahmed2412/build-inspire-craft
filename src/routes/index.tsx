@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
@@ -22,12 +22,7 @@ import mPaint from "@/assets/mfg-paint.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
 import mQc from "@/assets/mfg-qc.jpg";
-import p1 from "@/assets/proj-1.jpg";
-import p2 from "@/assets/proj-2.jpg";
-import p3 from "@/assets/proj-3.jpg";
-import p4 from "@/assets/proj-4.jpg";
-import p5 from "@/assets/proj-5.jpg";
-import p6 from "@/assets/proj-6.jpg";
+import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   component: Home,
