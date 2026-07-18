@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
@@ -22,12 +22,7 @@ import mPaint from "@/assets/mfg-paint.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
 import mQc from "@/assets/mfg-qc.jpg";
-import p1 from "@/assets/proj-1.jpg";
-import p2 from "@/assets/proj-2.jpg";
-import p3 from "@/assets/proj-3.jpg";
-import p4 from "@/assets/proj-4.jpg";
-import p5 from "@/assets/proj-5.jpg";
-import p6 from "@/assets/proj-6.jpg";
+import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -522,14 +517,6 @@ function ServicePanel({ t, img, k, idx, total }: { t: string; img: string; k: st
 
 /* ────────────────── SECTION 5 — Gallery masonry ────────────────── */
 function SectionGallery() {
-  const items = [
-    { src: p1, span: "row-span-2" },
-    { src: p2, span: "" },
-    { src: p3, span: "row-span-2" },
-    { src: p4, span: "" },
-    { src: p5, span: "row-span-2" },
-    { src: p6, span: "" },
-  ];
   return (
     <section id="work" className="border-t border-border py-32 md:py-48">
       <div className="mx-auto max-w-[92rem] px-6 md:px-10 mb-16">
@@ -546,44 +533,48 @@ function SectionGallery() {
         </div>
       </div>
       <div className="mx-auto max-w-[92rem] px-6 md:px-10 grid grid-cols-2 md:grid-cols-3 auto-rows-[22vh] md:auto-rows-[28vh] gap-4 md:gap-6">
-        {items.map((it, i) => <TiltCard key={i} src={it.src} className={it.span} idx={i} />)}
+        {projects.map((p, i) => (
+          <TiltCard key={p.id} project={p} idx={i} />
+        ))}
       </div>
     </section>
   );
 }
 
-function TiltCard({ src, className = "", idx }: { src: string; className?: string; idx: number }) {
+function TiltCard({ project, idx }: { project: import("@/data/projects").Project; idx: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.9, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      onMouseMove={(e) => {
-        const r = ref.current!.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / r.width - 0.5) * 8;
-        const y = ((e.clientY - r.top) / r.height - 0.5) * -8;
-        setTilt({ x, y });
-      }}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      style={{ transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
-      className={`group relative overflow-hidden ${className} transition-transform duration-300`}
-    >
-      <img
-        src={src}
-        alt=""
-        loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-        <span>Project · {String(idx + 1).padStart(3, "0")}</span>
-        <span>View →</span>
-      </div>
-    </motion.div>
+    <Link to="/work/$projectId" params={{ projectId: project.id }} className="contents">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.9, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
+        onMouseMove={(e) => {
+          const r = ref.current!.getBoundingClientRect();
+          const x = ((e.clientX - r.left) / r.width - 0.5) * 8;
+          const y = ((e.clientY - r.top) / r.height - 0.5) * -8;
+          setTilt({ x, y });
+        }}
+        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+        style={{ transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
+        className={`group relative overflow-hidden ${project.span} transition-transform duration-300`}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+          <span>Project · {project.id}</span>
+          <span>View →</span>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
 
