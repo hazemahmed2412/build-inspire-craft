@@ -541,38 +541,40 @@ function SectionGallery() {
   );
 }
 
-function TiltCard({ src, className = "", idx }: { src: string; className?: string; idx: number }) {
+function TiltCard({ project, idx }: { project: import("@/data/projects").Project; idx: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.9, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      onMouseMove={(e) => {
-        const r = ref.current!.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / r.width - 0.5) * 8;
-        const y = ((e.clientY - r.top) / r.height - 0.5) * -8;
-        setTilt({ x, y });
-      }}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      style={{ transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
-      className={`group relative overflow-hidden ${className} transition-transform duration-300`}
-    >
-      <img
-        src={src}
-        alt=""
-        loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-        <span>Project · {String(idx + 1).padStart(3, "0")}</span>
-        <span>View →</span>
-      </div>
-    </motion.div>
+    <Link to="/work/$projectId" params={{ projectId: project.id }} className="contents">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.9, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }}
+        onMouseMove={(e) => {
+          const r = ref.current!.getBoundingClientRect();
+          const x = ((e.clientX - r.left) / r.width - 0.5) * 8;
+          const y = ((e.clientY - r.top) / r.height - 0.5) * -8;
+          setTilt({ x, y });
+        }}
+        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+        style={{ transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
+        className={`group relative overflow-hidden ${project.span} transition-transform duration-300`}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+          <span>Project · {project.id}</span>
+          <span>View →</span>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
 
