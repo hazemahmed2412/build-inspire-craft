@@ -307,7 +307,7 @@ function SectionBlueprint() {
 /* ────────────────── SECTION 2 — Materials ────────────────── */
 function SectionMaterials() {
   const materials = [
-    { n: "01", name: "Wood Panels", note: "European oak, walnut, veneer" },
+    { n: "01", name: "Wood Panels", note: "European oak, walnut, veneer", img: materialWood },
     { n: "02", name: "Steel Structure", note: "Powder-coated, laser-cut" },
     { n: "03", name: "Structural Glass", note: "Tempered, low-iron" },
     { n: "04", name: "Aluminum Cladding", note: "Brushed, anodized" },
