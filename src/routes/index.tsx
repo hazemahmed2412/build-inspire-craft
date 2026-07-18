@@ -355,18 +355,21 @@ function MaterialTile({ n, name, note, idx, img }: { n: string; name: string; no
         <span className="font-mono text-xs text-foreground/50">{n}</span>
         <span className="h-2 w-2 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
       </div>
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] group-hover:opacity-[0.09] transition-opacity">
+      <div className="absolute inset-0 flex items-center justify-center">
         {img ? (
-          <img
-            src={img}
-            alt={name}
-            loading="lazy"
-            className="h-full w-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
-            width={1024}
-            height={1280}
-          />
+          <>
+            <img
+              src={img}
+              alt={name}
+              loading="lazy"
+              className="h-full w-full object-cover opacity-40 group-hover:opacity-65 group-hover:scale-105 transition-all duration-1000"
+              width={1024}
+              height={1280}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+          </>
         ) : (
-          <span className="font-display text-[14rem] leading-none">{n}</span>
+          <span className="font-display text-[14rem] leading-none opacity-[0.04] group-hover:opacity-[0.09] transition-opacity">{n}</span>
         )}
       </div>
       <div className="relative z-10">
