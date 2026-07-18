@@ -18,6 +18,7 @@ import mCnc from "@/assets/mfg-cnc.jpg";
 import mLaser from "@/assets/mfg-laser.jpg";
 import mWood from "@/assets/mfg-wood.jpg";
 import mPaint from "@/assets/mfg-paint.jpg";
+import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
 import mQc from "@/assets/mfg-qc.jpg";
 import p1 from "@/assets/proj-1.jpg";
@@ -75,9 +76,8 @@ function Nav() {
           scrolled ? "glass rounded-full py-2.5 px-4 md:px-6 max-w-6xl" : ""
         }`}
       >
-        <a href="#top" className="flex items-center gap-2">
-          <span className="inline-block h-2 w-2 bg-bone" />
-          <span className="font-display text-lg tracking-[0.3em]">MONOLITH</span>
+        <a href="#top" className="flex items-center" aria-label="Home">
+          <img src={logoAsset.url} alt="Logo" className="h-7 md:h-8 w-auto object-contain" />
         </a>
         <nav className="hidden md:flex items-center gap-10 text-sm text-foreground/70">
           {["Work", "Craft", "Services", "Studio"].map((l) => (
@@ -724,9 +724,8 @@ function Footer() {
   return (
     <footer className="border-t border-border py-12">
       <div className="mx-auto max-w-[92rem] px-6 md:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-xs uppercase tracking-[0.24em] text-foreground/50">
-        <div className="flex items-center gap-2">
-          <span className="inline-block h-2 w-2 bg-bone" />
-          <span className="font-display tracking-[0.3em] text-foreground">MONOLITH</span>
+        <div className="flex items-center">
+          <img src={logoAsset.url} alt="Logo" className="h-7 w-auto object-contain" />
         </div>
         <div>© {new Date().getFullYear()} Monolith Atelier — All rights reserved</div>
         <div className="flex gap-6">
