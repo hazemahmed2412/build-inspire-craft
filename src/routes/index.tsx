@@ -17,6 +17,7 @@ import sTurnkey from "@/assets/service-turnkey.jpg";
 import mCnc from "@/assets/mfg-cnc.jpg";
 import mLaser from "@/assets/mfg-laser.jpg";
 import mWood from "@/assets/mfg-wood.jpg";
+import materialWood from "@/assets/material-wood.jpg";
 import mPaint from "@/assets/mfg-paint.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
@@ -306,7 +307,7 @@ function SectionBlueprint() {
 /* ────────────────── SECTION 2 — Materials ────────────────── */
 function SectionMaterials() {
   const materials = [
-    { n: "01", name: "Wood Panels", note: "European oak, walnut, veneer" },
+    { n: "01", name: "Wood Panels", note: "European oak, walnut, veneer", img: materialWood },
     { n: "02", name: "Steel Structure", note: "Powder-coated, laser-cut" },
     { n: "03", name: "Structural Glass", note: "Tempered, low-iron" },
     { n: "04", name: "Aluminum Cladding", note: "Brushed, anodized" },
@@ -339,7 +340,7 @@ function SectionMaterials() {
   );
 }
 
-function MaterialTile({ n, name, note, idx }: { n: string; name: string; note: string; idx: number }) {
+function MaterialTile({ n, name, note, idx, img }: { n: string; name: string; note: string; idx: number; img?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15%" });
   return (
@@ -350,14 +351,28 @@ function MaterialTile({ n, name, note, idx }: { n: string; name: string; note: s
       transition={{ duration: 0.9, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
       className="group relative bg-background p-8 md:p-10 aspect-[4/5] flex flex-col justify-between overflow-hidden"
     >
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between relative z-10">
         <span className="font-mono text-xs text-foreground/50">{n}</span>
         <span className="h-2 w-2 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
       </div>
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] group-hover:opacity-[0.09] transition-opacity">
-        <span className="font-display text-[14rem] leading-none">{n}</span>
+      <div className="absolute inset-0 flex items-center justify-center">
+        {img ? (
+          <>
+            <img
+              src={img}
+              alt={name}
+              loading="lazy"
+              className="h-full w-full object-cover opacity-40 group-hover:opacity-65 group-hover:scale-105 transition-all duration-1000"
+              width={1024}
+              height={1280}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+          </>
+        ) : (
+          <span className="font-display text-[14rem] leading-none opacity-[0.04] group-hover:opacity-[0.09] transition-opacity">{n}</span>
+        )}
       </div>
-      <div>
+      <div className="relative z-10">
         <h3 className="font-display text-3xl md:text-4xl mb-2">{name}</h3>
         <p className="text-sm text-foreground/50">{note}</p>
       </div>
