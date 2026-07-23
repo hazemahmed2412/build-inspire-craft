@@ -84,14 +84,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "A design-and-build atelier crafting exhibition booths, structural facades, custom joinery and turnkey interiors. From concept to reality.",
       },
       { name: "author", content: "MONOLITH" },
-      { property: "og:title", content: "MONOLITH — We Build Spaces That Inspire" },
+      { property: "og:title", content: "MONOLITH — Architecture, Fabrication & Turnkey Construction" },
       {
         property: "og:description",
         content:
-          "Exhibition booths, custom wood, aluminum cladding, structural glass facades, acrylic signage, interior fit-out and turnkey construction.",
+          "A design-and-build atelier crafting exhibition booths, structural facades, custom joinery and turnkey interiors. From concept to reality.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "MONOLITH — Architecture, Fabrication & Turnkey Construction" },
+      { name: "twitter:description", content: "A design-and-build atelier crafting exhibition booths, structural facades, custom joinery and turnkey interiors. From concept to reality." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c8255f39-31c2-4e8f-9113-cccd044816e0/id-preview-a842d770--9e40e56a-9b78-45e9-b676-db786f254d50.lovable.app-1784414689546.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c8255f39-31c2-4e8f-9113-cccd044816e0/id-preview-a842d770--9e40e56a-9b78-45e9-b676-db786f254d50.lovable.app-1784414689546.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
