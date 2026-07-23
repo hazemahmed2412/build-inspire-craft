@@ -81,6 +81,9 @@ function Nav() {
               {l}
             </a>
           ))}
+          <Link to="/clients" className="hover:text-foreground transition-colors">
+            Clients
+          </Link>
         </nav>
         <a
           href="#contact"
