@@ -716,8 +716,8 @@ function SectionCTA() {
               <path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" strokeWidth="1.4" />
             </svg>
           </a>
-          <a href="tel:+10000000000" className="text-sm uppercase tracking-[0.24em] text-foreground/70 hover:text-foreground">
-            Or call +1 (000) 000-0000
+          <a href="tel:+201225341205" className="text-sm uppercase tracking-[0.24em] text-foreground/70 hover:text-foreground">
+            OR CALL +20 (122) 534-1205
           </a>
         </div>
       </div>
