@@ -55,6 +55,7 @@ function Home() {
       <SectionGallery />
       <SectionStats />
       <SectionTestimonials />
+      <SectionClients />
       <SectionCTA />
       <Footer />
     </main>
