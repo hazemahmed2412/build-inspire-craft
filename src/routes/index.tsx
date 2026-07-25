@@ -703,7 +703,68 @@ function SectionTestimonials() {
   );
 }
 
-/* ────────────────── SECTION 8 — CTA ────────────────── */
+/* ────────────────── SECTION 8 — Clients ────────────────── */
+const clients = [
+  { name: "Arab Organizers", logo: arabOrganizers.url },
+  { name: "ADO MENA", logo: adoMena.url },
+  { name: "League of Arab States", logo: arabLeague.url },
+  { name: "Ain Shams University", logo: ainShams.url },
+  { name: "The American University in Cairo", logo: auc.url },
+  { name: "UCCMA", logo: uccma.url },
+  { name: "Alfa Cure Centers", logo: alfaCure.url },
+  { name: "Geely", logo: geely.url },
+  { name: "MINI", logo: mini.url },
+];
+
+function SectionClients() {
+  return (
+    <section id="clients" className="border-t border-border py-24 md:py-32">
+      <div className="mx-auto max-w-[92rem] px-6 md:px-10">
+        <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
+          <div>
+            <div className="eyebrow mb-4">Chapter 08 / Clients</div>
+            <h2 className="text-display text-balance text-[clamp(1.8rem,3vw,3rem)] leading-[1]">
+              Trusted by brands we build alongside.
+            </h2>
+            <p className="mt-6 text-foreground/60 max-w-sm leading-relaxed">
+              From government institutions to luxury automotive and healthcare, the organizations who choose ARTGRAPH.
+            </p>
+            <Link
+              to="/clients"
+              className="inline-flex mt-8 items-center gap-2 text-xs uppercase tracking-[0.24em] text-foreground/70 hover:text-foreground transition-colors"
+            >
+              View all clients <span>→</span>
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-[1px] bg-border/40">
+            {clients.map((client, i) => (
+              <motion.div
+                key={client.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative bg-background aspect-[4/3] flex items-center justify-center p-8 md:p-10 hover:bg-foreground/[0.03] transition-colors"
+              >
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  loading="lazy"
+                  className="max-h-16 md:max-h-20 max-w-[75%] w-auto object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                />
+                <div className="absolute inset-x-6 bottom-4 text-center text-[10px] uppercase tracking-[0.25em] text-foreground/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {client.name}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────── SECTION 9 — CTA ────────────────── */
 function SectionCTA() {
   return (
     <section id="contact" className="relative overflow-hidden py-40 md:py-56 border-t border-border">
