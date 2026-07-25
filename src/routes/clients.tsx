@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import logoAsset from "@/assets/logo.png.asset.json";
+import arabOrganizers from "@/assets/clients/arab-organizers.png.asset.json";
+import adoMena from "@/assets/clients/ado-mena.png.asset.json";
+import arabLeague from "@/assets/clients/arab-league.png.asset.json";
+import ainShams from "@/assets/clients/ain-shams.png.asset.json";
+import auc from "@/assets/clients/auc.png.asset.json";
+import uccma from "@/assets/clients/uccma.webp.asset.json";
+import alfaCure from "@/assets/clients/alfa-cure.png.asset.json";
+import geely from "@/assets/clients/geely.png.asset.json";
+import mini from "@/assets/clients/mini.svg.asset.json";
 
 export const Route = createFileRoute("/clients")({
   head: () => ({
@@ -17,18 +26,15 @@ export const Route = createFileRoute("/clients")({
 });
 
 const clients = [
-  { name: "Luxury Automotive Brand", category: "Automotive" },
-  { name: "Swiss Watch Maison", category: "Luxury" },
-  { name: "Regional Fashion Retailer", category: "Retail" },
-  { name: "Italian Furniture House", category: "Furniture" },
-  { name: "Government Cultural Authority", category: "Culture" },
-  { name: "Contemporary Art Platform", category: "Art" },
-  { name: "Global Tech Expo", category: "Technology" },
-  { name: "Heritage Hospitality Group", category: "Hospitality" },
-  { name: "Premium Cosmetics Label", category: "Beauty" },
-  { name: "International Bank", category: "Finance" },
-  { name: "Real Estate Developer", category: "Real Estate" },
-  { name: "Pharmaceutical Leader", category: "Healthcare" },
+  { name: "Arab Organizers", logo: arabOrganizers.url },
+  { name: "ADO MENA", logo: adoMena.url },
+  { name: "League of Arab States", logo: arabLeague.url },
+  { name: "Ain Shams University", logo: ainShams.url },
+  { name: "The American University in Cairo", logo: auc.url },
+  { name: "UCCMA", logo: uccma.url },
+  { name: "Alfa Cure Centers", logo: alfaCure.url },
+  { name: "Geely", logo: geely.url },
+  { name: "MINI", logo: mini.url },
 ];
 
 function ClientsPage() {
@@ -72,7 +78,7 @@ function ClientsPage() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-6xl md:text-8xl leading-[0.95] text-foreground mb-8 max-w-4xl"
           >
-            Brands we’ve built alongside.
+            Brands we've built alongside.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -95,15 +101,16 @@ function ClientsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative bg-background aspect-[4/3] flex flex-col items-center justify-center p-8 hover:bg-foreground/[0.02] transition-colors"
+                className="group relative bg-background aspect-[4/3] flex items-center justify-center p-10 hover:bg-foreground/[0.03] transition-colors"
               >
-                <div className="text-center">
-                  <div className="font-serif text-2xl md:text-3xl text-foreground/90 mb-3 group-hover:text-foreground transition-colors">
-                    {client.name}
-                  </div>
-                  <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/40">
-                    {client.category}
-                  </div>
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  loading="lazy"
+                  className="max-h-20 md:max-h-24 max-w-[70%] w-auto object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
+                />
+                <div className="absolute inset-x-6 bottom-4 text-center text-[10px] uppercase tracking-[0.25em] text-foreground/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {client.name}
                 </div>
                 <div className="absolute inset-0 border border-transparent group-hover:border-foreground/10 transition-colors pointer-events-none" />
               </motion.div>
