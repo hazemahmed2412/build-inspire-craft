@@ -22,6 +22,15 @@ import mPaint from "@/assets/mfg-paint.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
 import mQc from "@/assets/mfg-qc.jpg";
+import arabOrganizers from "@/assets/clients/arab-organizers.png.asset.json";
+import adoMena from "@/assets/clients/ado-mena.png.asset.json";
+import arabLeague from "@/assets/clients/arab-league.png.asset.json";
+import ainShams from "@/assets/clients/ain-shams.png.asset.json";
+import auc from "@/assets/clients/auc.png.asset.json";
+import uccma from "@/assets/clients/uccma.webp.asset.json";
+import alfaCure from "@/assets/clients/alfa-cure.png.asset.json";
+import geely from "@/assets/clients/geely.png.asset.json";
+import mini from "@/assets/clients/mini.svg.asset.json";
 import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
