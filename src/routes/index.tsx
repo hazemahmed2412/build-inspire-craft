@@ -773,7 +773,7 @@ function SectionCTA() {
         backgroundSize: "64px 64px",
       }} />
       <div className="relative mx-auto max-w-[92rem] px-6 md:px-10 text-center">
-        <div className="eyebrow mb-8">Chapter 08 / Begin</div>
+        <div className="eyebrow mb-8">Chapter 09 / Begin</div>
         <h2 className="text-display text-balance text-[clamp(2.8rem,11vw,11rem)] leading-[0.9]">
           <MaskLine>Let's build</MaskLine>
           <MaskLine delay={0.15}>
@@ -782,7 +782,7 @@ function SectionCTA() {
         </h2>
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
           <a
-            href="mailto:studio@monolith.build"
+            href="mailto:Artgraphegy3@gmail.com"
             className="group inline-flex items-center gap-4 rounded-full bg-foreground px-9 py-5 text-sm font-medium uppercase tracking-[0.24em] text-background hover:gap-6 transition-all"
           >
             Contact Us
