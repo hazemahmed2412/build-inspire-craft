@@ -807,7 +807,7 @@ function Footer() {
         <div className="flex items-center">
           <img src={logoAsset.url} alt="Logo" className="h-7 w-auto object-contain" />
         </div>
-        <div>© {new Date().getFullYear()} Monolith Atelier — All rights reserved</div>
+        <div>© {new Date().getFullYear()} ARTGRAPH — Creative Design & Production</div>
         <div className="flex gap-6">
           <a href="#" className="hover:text-foreground">Instagram</a>
           <a href="#" className="hover:text-foreground">LinkedIn</a>
