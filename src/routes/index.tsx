@@ -18,6 +18,11 @@ import mCnc from "@/assets/mfg-cnc.jpg";
 import mLaser from "@/assets/mfg-laser.jpg";
 import mWood from "@/assets/mfg-wood.jpg";
 import materialWood from "@/assets/material-wood.jpg";
+import materialSteel from "@/assets/material-steel.jpg";
+import materialGlass from "@/assets/material-glass.jpg";
+import materialAluminum from "@/assets/material-aluminum.jpg";
+import materialAcrylic from "@/assets/material-acrylic.jpg";
+import materialLighting from "@/assets/material-lighting.jpg";
 import mPaint from "@/assets/mfg-paint.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import mAssembly from "@/assets/mfg-assembly.jpg";
@@ -316,11 +321,11 @@ function SectionBlueprint() {
 function SectionMaterials() {
   const materials = [
     { n: "01", name: "Wood Panels", note: "European oak, walnut, veneer", img: materialWood },
-    { n: "02", name: "Steel Structure", note: "Powder-coated, laser-cut" },
-    { n: "03", name: "Structural Glass", note: "Tempered, low-iron" },
-    { n: "04", name: "Aluminum Cladding", note: "Brushed, anodized" },
-    { n: "05", name: "Acrylic", note: "Cast, edge-lit" },
-    { n: "06", name: "Lighting", note: "Architectural, cinematic" },
+    { n: "02", name: "Steel Structure", note: "Powder-coated, laser-cut", img: materialSteel },
+    { n: "03", name: "Structural Glass", note: "Tempered, low-iron", img: materialGlass },
+    { n: "04", name: "Aluminum Cladding", note: "Brushed, anodized", img: materialAluminum },
+    { n: "05", name: "Acrylic", note: "Cast, edge-lit", img: materialAcrylic },
+    { n: "06", name: "Lighting", note: "Architectural, cinematic", img: materialLighting },
   ];
   return (
     <section id="craft" className="relative py-32 md:py-48 border-t border-border">
