@@ -362,11 +362,26 @@ function MaterialTile({ n, name, note, idx, img }: { n: string; name: string; no
       initial={{ opacity: 0, y: 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative bg-background p-8 md:p-10 aspect-[4/5] flex flex-col justify-between overflow-hidden"
+      className="group relative bg-background p-8 md:p-10 aspect-[4/5] flex flex-col justify-between overflow-hidden cursor-pointer"
     >
-      <div className="flex items-start justify-between relative z-10">
-        <span className="font-mono text-xs text-foreground/50">{n}</span>
-        <span className="h-2 w-2 rounded-full bg-foreground/30 group-hover:bg-foreground transition-colors" />
+      {/* glassmorphism highlight panel */}
+      <div className="pointer-events-none absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-primary/5 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-primary/[0.08] to-transparent backdrop-blur-[2px]" />
+        <div className="absolute inset-0 border border-primary/10 group-hover:border-primary/20 transition-colors duration-700" />
+      </div>
+
+      {/* sweep shimmer */}
+      <div
+        className="pointer-events-none absolute inset-0 z-20 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out opacity-0 group-hover:opacity-30"
+        style={{
+          background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)",
+        }}
+      />
+
+      <div className="flex items-start justify-between relative z-30">
+        <span className="font-mono text-xs text-foreground/50 group-hover:text-foreground/80 transition-colors duration-500">{n}</span>
+        <span className="h-2 w-2 rounded-full bg-foreground/30 group-hover:bg-primary group-hover:shadow-[0_0_12px_rgba(255,255,255,0.35)] transition-all duration-500" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         {img ? (
@@ -375,19 +390,19 @@ function MaterialTile({ n, name, note, idx, img }: { n: string; name: string; no
               src={img}
               alt={name}
               loading="lazy"
-              className="h-full w-full object-cover opacity-40 group-hover:opacity-65 group-hover:scale-105 transition-all duration-1000"
+              className="h-full w-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-[1.08] transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
               width={1024}
               height={1280}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30 group-hover:via-background/40 transition-colors duration-700" />
           </>
         ) : (
-          <span className="font-display text-[14rem] leading-none opacity-[0.04] group-hover:opacity-[0.09] transition-opacity">{n}</span>
+          <span className="font-display text-[14rem] leading-none opacity-[0.04] group-hover:opacity-[0.09] transition-opacity duration-700">{n}</span>
         )}
       </div>
-      <div className="relative z-10">
-        <h3 className="font-display text-3xl md:text-4xl mb-2">{name}</h3>
-        <p className="text-sm text-foreground/50">{note}</p>
+      <div className="relative z-30">
+        <h3 className="font-display text-3xl md:text-4xl mb-2 group-hover:translate-y-[-2px] transition-transform duration-500">{name}</h3>
+        <p className="text-sm text-foreground/50 group-hover:text-foreground/80 transition-colors duration-500">{note}</p>
       </div>
     </motion.div>
   );
